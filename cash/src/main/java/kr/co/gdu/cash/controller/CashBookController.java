@@ -2,6 +2,7 @@ package kr.co.gdu.cash.controller;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -51,7 +52,7 @@ public class CashBookController {
 		int sumIn = cashbookService.getsumCashbookPriceByInOut("수입", currentYear, currentMonth);
 		int sumOut = cashbookService.getsumCashbookPriceByInOut("지출", currentYear, currentMonth);
 		// ------------------------------------------DB
-
+		List<Map<String, Object>> cashList = cashbookService.getCashListByMonth(currentYear, currentMonth);
 		// 디버깅
 		System.out.println(currentMonth + "<--month");
 		System.out.println(lastDay + "<--lastDay");
@@ -64,8 +65,11 @@ public class CashBookController {
 		model.addAttribute("currentMonth", currentMonth);// 월
 		model.addAttribute("lastDay", lastDay);// 마지막 일
 		model.addAttribute("firstDayOfWeek", firstDayOfWeek); // 1일의 요일
+		
 		model.addAttribute("sumIn",sumIn);
 		model.addAttribute("sumOut",sumOut);
+		
+		model.addAttribute("cashList",cashList);
 		return "cashbookByMonth";
 	}
 }

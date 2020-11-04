@@ -9,4 +9,5 @@ import org.apache.ibatis.annotations.Mapper;
 public interface CashbookMapper {
 	List<Map<String, Object>> selectCashInOutList();
 	Integer selectsumCashbookPriceByInOut(Map<String, Object> map);
+	List<Map<String, Object>> selectCashListByMonth(Map<String,Object>map);
 }
