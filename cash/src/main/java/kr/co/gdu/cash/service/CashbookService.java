@@ -9,11 +9,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.co.gdu.cash.mapper.CashbookMapper;
+import kr.co.gdu.cash.vo.Cashbook;
 
 @Service
 @Transactional
 public class CashbookService {
 	@Autowired private CashbookMapper cashbookMapper;
+	
+	public int addCashbook(Cashbook cashbook) {
+		return cashbookMapper.insertCashbook(cashbook);
+	}
 	
 	public int getsumCashbookPriceByInOut(String cashbookKind, int currentYear, int currentMonth){
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -30,5 +35,13 @@ public class CashbookService {
 		map.put("currentMonth", currentMonth);
 		
 		return cashbookMapper.selectCashListByMonth(map);
+	}
+	
+	public List<Cashbook> getCashbookListByDay(int currentYear, int currentMonth, int currentDay){
+		Map<String, Object>map = new HashMap<String, Object>();
+		map.put("currentYear", currentYear);
+		map.put("currentMonth", currentMonth);
+		map.put("currentDay",currentDay);
+		return cashbookMapper.selectCashBookListByDay(map);
 	}
 }

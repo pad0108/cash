@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>index</h1>
+	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<!-- 공지 -->
 	<div>
 		<table border="1">
