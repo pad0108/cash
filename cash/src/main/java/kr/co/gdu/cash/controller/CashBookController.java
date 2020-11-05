@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.gdu.cash.service.CashbookService;
 import kr.co.gdu.cash.service.CategoryService;
-import kr.co.gdu.cash.service.IndexService;
+import kr.co.gdu.cash.service.NoticeService;
 import kr.co.gdu.cash.vo.Cashbook;
 import kr.co.gdu.cash.vo.Category;
 import kr.co.gdu.cash.vo.Notice;
@@ -24,14 +24,14 @@ public class CashBookController {
 	private CashbookService cashbookService;
 	@Autowired 
 	private CategoryService categoryService;
-	@PostMapping("/addCashbook")
+	@PostMapping("/admin/addCashbook")
 	public String addCashbook(Cashbook cashbook){ //커맨드 객체
 		//디버깅
 		//System.out.println(cashbook);
 		cashbookService.addCashbook(cashbook);
-		return "redirect:/cashbookByMonth"; //response.sendRedirect() 와 동일
+		return "redirect:/admin/cashbookByMonth"; //response.sendRedirect() 와 동일
 	}
-	@GetMapping("/addCashbook")
+	@GetMapping("/admin/addCashbook")
 	public String addCashbook(Model model){
 		List<Category> categoryList = categoryService.getCategoryList();
 		model.addAttribute("categoryList",categoryList);
@@ -39,7 +39,7 @@ public class CashBookController {
 		return "addCashbook"; //forward 와 동일
 	}
 	
-	@GetMapping("/cashbookByDay")
+	@GetMapping("/admin/cashbookByDay")
 	public String cashbookByDay(Model model,
 								@RequestParam(name = "currentYear", required = true)int currentYear,
 								@RequestParam(name = "currentMonth", required = true)int currentMonth,
@@ -51,7 +51,7 @@ public class CashBookController {
 	
 	
 	
-	@GetMapping(value = { "/cashbookByMonth" })
+	@GetMapping(value = { "/admin/cashbookByMonth" })
 	// requestparam으로 paramMonth가 null이면 0으로 바꿔라(int로 형변환을 해야하기 떄문에) =
 	// ("request.getParamater("paramMonth");)
 	public String cashbookByMonth(Model model, @RequestParam(name = "currentYear", defaultValue = "-1") int currentYear,

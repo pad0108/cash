@@ -7,7 +7,8 @@
     select
     	notice_id as noticeId,
     	notice_title as noticeTitle,
-    	notice_date as noticeDate
+    	notice_date as noticeDate,
+    	notice_content as noticeContent
     from notice
     order by notice_date
     desc limit 0, 5

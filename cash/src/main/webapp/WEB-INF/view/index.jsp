@@ -9,6 +9,7 @@
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<!-- 공지 -->
+	<div>공지사항 <a href="/admin/noticeList">more</a></div>
 	<div>
 		<table border="1">
 			<thead>

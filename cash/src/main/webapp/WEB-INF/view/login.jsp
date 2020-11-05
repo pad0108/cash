@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
+	<h1>공지사항</h1>
 	<!-- 공지 -->
 	<div>
 		<table border="1">
@@ -29,28 +29,17 @@
 			</tbody>
 		</table>
 	</div>
-	<!-- 수입 지출 -->
-	<div>
-		<table border="1">
-			<thead>
-				<tr>
-					<th>날짜</th>
-					<th>수입</th>
-					<th>지출</th>
-					<th>합계</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="io" items="${inOutList}">
-				<tr>
-					<td>${io["날짜"]}</td>
-					<td>${io["수입"]}</td>
-					<td>${io["지출"]}</td>
-					<td>${io["합계"]}</td>
-				</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div>
+	<h1>로그인</h1>
+	<form action="/login" method="post">
+		<div>
+			ID : <input type="text" name="id">
+		</div>
+		<div>
+			PW: <input type="text" name="pw">
+		</div>
+		<div>
+			<button type="submit">로그인</button>
+		</div>
+	</form>
 </body>
 </html>

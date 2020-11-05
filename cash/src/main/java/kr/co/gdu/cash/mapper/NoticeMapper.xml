@@ -3,14 +3,60 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.gdu.cash.mapper.NoticeMapper">
-  <select id="selectLatestNoticeList" resultType="kr.co.gdu.cash.vo.Notice">
-    select
-    	notice_id as noticeId,
-    	notice_title as noticeTitle,
-    	notice_date as noticeDate,
-    	notice_content as noticeContent
-    from notice
-    order by notice_date
-    desc limit 0, 5
-  </select>
+	<select id="selectLatestNoticeList" resultType="kr.co.gdu.cash.vo.Notice">
+		select
+			notice_id as noticeId,
+			notice_title as noticeTitle,
+			notice_date as noticeDate,
+			notice_content as noticeContent
+		from notice
+		order by notice_date
+		desc limit 0, 5
+	</select>
+
+	<select id="selectNoticeListByPage" parameterType="java.util.Map" resultType="kr.co.gdu.cash.vo.Notice">
+		SELECT
+			notice_id noticeId,
+			notice_title noticeTitle,
+			notice_content noticeContent,
+			notice_date noticeDate
+		FROM notice
+		ORDER BY notice_date DESC
+		LIMIT #{beginRow}, #{rowPerPage}
+	</select>
+	<insert id="insertNotice" parameterType="kr.co.gdu.cash.vo.Notice">
+		INSERT INTO notice(
+			notice_title,
+			notice_content,
+			notice_date
+		) VALUES (
+			#{noticeTitle},
+			#{noticeContent},
+			NOW()
+		)
+	</insert>
+	<delete id="deleteNotice" parameterType="int">
+		DELETE
+		FROM notice
+		WHERE notice_id = #{noticeId}
+	</delete>
+	<update id="modifyNotice" parameterType="kr.co.gdu.cash.vo.Notice">
+		UPDATE notice
+		SET notice_title = #{noticeTitle},
+			notice_content = #{noticeContent},
+			notice_date = NOW()
+		WHERE notice_id = #{noticeId}
+	</update>
+	<select id="selectNoticeOne" parameterType="int" resultType="kr.co.gdu.cash.vo.Notice">
+		SELECT
+			notice_id noticeId,
+			notice_title noticeTitle,
+			notice_content noticeContent,
+			notice_date noticeDate
+		FROM notice
+		WHERE notice_id = #{noticeId}
+	</select>
+	<select id="selectNoticeCount" resultType="Integer">
+  		SELECT COUNT(*) FROM notice
+	</select>
 </mapper>

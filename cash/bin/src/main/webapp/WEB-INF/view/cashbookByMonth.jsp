@@ -50,9 +50,9 @@ td{
 	<div>${month}월 지출 합계 : ${sumOut}</div>
 	<h3>
 		<a
-			href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth-1}">[이전
+			href="/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth-1}">[이전
 			달]</a> ${currentYear}년 ${currentMonth}월 <a
-			href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1}">[다음달
+			href="/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1}">[다음달
 			달]</a>
 	</h3>
 	<div>
@@ -78,7 +78,7 @@ td{
 						<c:if test="${i-(firstDayOfWeek-1) > 0}">
 							<td>
 								<div>
-									<a href="/admin/cashbookByDay?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${i-(firstDayOfWeek-1)}">${i-(firstDayOfWeek-1)}</a>
+									<a href="/cashbookByDay?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${i-(firstDayOfWeek-1)}">${i-(firstDayOfWeek-1)}</a>
 								</div> <!-- 지출/수입 목록이 있는 날짜를 cashList에서 검색 -->
 								<c:forEach var="c" items="${cashList}">
 									<c:if test="${i-(firstDayOfWeek-1) == c.dday}">
