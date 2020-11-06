@@ -41,11 +41,26 @@ public class CashBookController {
 	
 	@GetMapping("/admin/cashbookByDay")
 	public String cashbookByDay(Model model,
+								@RequestParam(name = "target", defaultValue= " ") String target,
 								@RequestParam(name = "currentYear", required = true)int currentYear,
 								@RequestParam(name = "currentMonth", required = true)int currentMonth,
 								@RequestParam(name = "currentDay", required = true)int currentDay) {
-		List<Cashbook> cashbookList = cashbookService.getCashbookListByDay(currentYear, currentMonth, currentDay);
+		
+		Calendar targetDay = Calendar.getInstance();
+		targetDay.set(Calendar.YEAR, currentYear);
+		targetDay.set(Calendar.MONTH, currentMonth-1);
+		targetDay.set(Calendar.DATE, currentDay);
+		if(target.equals("pre")) {
+			targetDay.add(Calendar.DATE, -1);
+		} else if(target.equals("next")) {
+			targetDay.add(Calendar.DATE, +1);
+		}
+		List<Cashbook> cashbookList = cashbookService.getCashbookListByDay(
+											targetDay.get(Calendar.YEAR),targetDay.get(Calendar.MONTH)+1,targetDay.get(Calendar.DATE));
 		model.addAttribute("cashbookList",cashbookList);
+		model.addAttribute("currentYear",targetDay.get(Calendar.YEAR));
+		model.addAttribute("currentMonth",targetDay.get(Calendar.MONTH)+1);
+		model.addAttribute("currentDay",targetDay.get(Calendar.DATE));
 		return "cashbookByDay";
 	}
 	
@@ -103,5 +118,31 @@ public class CashBookController {
 		
 		model.addAttribute("cashList",cashList);
 		return "cashbookByMonth";
+	}
+	// 수입/지출 삭제
+	@GetMapping("/admin/removeCashbook")
+	public String removeCashbook(@RequestParam(value = "cashbookId") int cashbookId) {
+		cashbookService.removeCashbook(cashbookId);
+		return "redirect:/admin/cashbookByMonth";
+	}
+	// 수입/지출 폼
+	@GetMapping("/admin/modifyCashbook")
+	public String modifyCashbook(Model model,
+								@RequestParam(value = "cashbookId")int cashbookId) {
+		Cashbook cashbook = cashbookService.getCashbookByDay(cashbookId);
+		
+		List<Category> categoryList = categoryService.getCategoryList();
+		model.addAttribute("categoryList", categoryList);
+		model.addAttribute("cashbook", cashbook);
+		
+		
+		return "modifyCashbook";
+	}
+	// 수입/지출 액션
+	@PostMapping("admin/modifyCashbook")
+	public String modifyCashbook(Cashbook cashbook) {
+		cashbookService.modifyCashbook(cashbook);
+		
+		return"redirect:/admin/cashbookByMonth";
 	}
 }

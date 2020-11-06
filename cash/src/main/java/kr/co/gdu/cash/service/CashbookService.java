@@ -44,4 +44,18 @@ public class CashbookService {
 		map.put("currentDay",currentDay);
 		return cashbookMapper.selectCashBookListByDay(map);
 	}
+	//삭제
+	public void removeCashbook(int cashbookId) {
+		cashbookMapper.deleteCashbook(cashbookId);
+	}
+	//수정
+	public void modifyCashbook(Cashbook cashbook) {
+		cashbookMapper.updateCashbook(cashbook);
+	}
+	//수정페이지
+	public Cashbook getCashbookByDay(int cashbookId) {
+		Cashbook cashbook = cashbookMapper.selectCashbookByDay(cashbookId);
+		
+		return cashbook;
+	}
 }
