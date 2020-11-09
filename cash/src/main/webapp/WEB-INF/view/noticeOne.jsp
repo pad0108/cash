@@ -4,34 +4,36 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 부트스트랩 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
-	<h1>noticeOne</h1>
-	<table border="1">
-		<tr>
-			<td>번호</td>
-			<td>${notice.noticeId}</td>
-		</tr>
-		<tr>
-			<td>제목</td>
-			<td>${notice.noticeTitle}</td>
-		</tr>
-		<tr>
-			<td>내용</td>
-			<td>${notice.noticeContent}</td>
-		</tr>
-		<tr>
-			<td>작성일</td>
-			<td>${notice.noticeDate}</td>
-		</tr>
-	</table>
-	<table>
-		<tr>
-			<td><a href="/admin/noticeList">돌아가기</a></td>
-			<td><a href="/admin/modifyNotice?noticeId=${notice.noticeId}">수정</a></td>
-			<td><a href="/admin/removeNotice?noticeId=${notice.noticeId}">삭제</a></td>
-		</tr>
-	</table>
+	<div class="container">
+		<h1>noticeOne</h1>
+		<table class="table">
+			<tr>
+				<td>번호 : ${notice.noticeId} </td>
+				<td>${notice.noticeTitle}</td>
+			</tr>
+			<tr>
+				<td style="text-align:right;"colspan="2">${notice.noticeDate}
+					<br>
+					<a href="/admin/modifyNotice?noticeId=${notice.noticeId}" class="btn btn-outline-dark">수정</a>
+					<a href="/admin/removeNotice?noticeId=${notice.noticeId}" class="btn btn-outline-dark">삭제</a>
+				</td>
+			</tr>
+			<tr>
+				<td>내용</td>
+				<td>
+					<textarea class="form-control" rows="10" readonly="readonly">${notice.noticeContent}
+					</textarea>
+				</td>
+			</tr>
+		</table>
+		<div>
+			<a href="/admin/noticeList" class="btn btn-secondary" style="float: right;">돌아가기</a>
+		</div>
+	</div>
 </body>
 </html>

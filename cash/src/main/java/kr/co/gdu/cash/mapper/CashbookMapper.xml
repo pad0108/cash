@@ -63,4 +63,29 @@
 		AND MONTH(cashbook_date)=#{currentMonth}
 		AND DAY(cashbook_date)=#{currentDay}
 	</select>
+	<delete id="deleteCashbook" parameterType="int">
+		DELETE
+		FROM cashbook
+		WHERE cashbook_id = #{cashbookId}
+	</delete>
+	<update id="updateCashbook" parameterType="kr.co.gdu.cash.vo.Cashbook">
+		update cashbook set
+			cashbook_kind = #{cashbookKind}, 
+			category_name = #{categoryName}, 
+			cashbook_price = #{cashbookPrice}, 
+			cashbook_content = #{cashbookContent}, 
+			update_date = now()
+		where cashbook_id = #{cashbookId}
+	
+	</update>
+	<select id="selectCashbookByDay" parameterType="Integer" resultType="kr.co.gdu.cash.vo.Cashbook">
+		SELECT cashbook_id as cashbookId,
+			cashbook_kind as cashbookKind,
+			category_name as categoryName,
+			cashbook_price as cashbookPrice,
+			cashbook_content as cashbookContent,
+			cashbook_date as cashbookDate
+		FROM cashbook
+	WHERE cashbook_id = #{cashbookId}
+  </select>
 </mapper>

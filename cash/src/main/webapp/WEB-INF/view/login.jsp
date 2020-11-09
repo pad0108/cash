@@ -5,41 +5,62 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 부트스트랩 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-	<h1>공지사항</h1>
-	<!-- 공지 -->
-	<div>
-		<table border="1">
-			<thead>
-				<tr>
-					<th>notice_id</th>
-					<th>notice_title</th>
-					<th>notice_content</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="n" items="${noticeList}">
-					<tr>
-						<td>${n.noticeId}</td>
-						<td>${n.noticeTitle}</td>
-						<td>${n.noticeContent}</td>
+<div class="container">
+		<h1 style="text-align:center;">공지사항</h1>
+		<!-- 공지 -->
+		<div>
+			<table class="table table-hover" style="table-layout:fixed; width:100%;">
+				<thead>
+					<tr class="table-active">
+						<th style="width:10%">번호</th>
+						<th>제목</th>
+						<th>내용</th>
 					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					<c:forEach var="n" items="${noticeList}">
+						<tr>
+							<td>${n.noticeId}</td>
+							<td>${n.noticeTitle}</td>
+							<td style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">${n.noticeContent}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+		<h1 style="text-align:center;">로그인</h1>
+		<form action="/login" method="post">
+			<table class="table table-borderless"style="width:100%;">
+				<tr>
+					<td>
+						<div>
+							<input type="text" name="id" class= "form-control"placeholder='아이디'>
+						</div>	
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div>
+							<input type="text" name="pw" class= "form-control" placeholder='비밀번호'>
+						</div>	
+					</td>
+				</tr>
+				<tr>
+					<td><hr style="width:100%;"></td>
+				</tr>
+				<tr>
+					<td style="text-align:center;">
+						<div>
+							<button type="submit" class="btn btn-outline-success" style="width:200px; height:75px;" >로그인</button>
+						</div>	
+					</td>
+				</tr>
+			</table>
+		</form>
 	</div>
-	<h1>로그인</h1>
-	<form action="/login" method="post">
-		<div>
-			ID : <input type="text" name="id">
-		</div>
-		<div>
-			PW: <input type="text" name="pw">
-		</div>
-		<div>
-			<button type="submit">로그인</button>
-		</div>
-	</form>
 </body>
 </html>
