@@ -19,8 +19,8 @@
 			<tr>
 				<td style="text-align:right;"colspan="2">${notice.noticeDate}
 					<br>
-					<a href="/admin/modifyNotice?noticeId=${notice.noticeId}" class="btn btn-outline-dark">수정</a>
-					<a href="/admin/removeNotice?noticeId=${notice.noticeId}" class="btn btn-outline-dark">삭제</a>
+					<a href="/admin/modifyNotice/${notice.noticeId}" class="btn btn-outline-dark">수정</a>
+					<a href="/admin/removeNotice/${notice.noticeId}" class="btn btn-outline-dark">삭제</a>
 				</td>
 			</tr>
 			<tr>

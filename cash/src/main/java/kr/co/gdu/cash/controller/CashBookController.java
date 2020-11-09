@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -24,27 +25,33 @@ public class CashBookController {
 	private CashbookService cashbookService;
 	@Autowired 
 	private CategoryService categoryService;
-	@PostMapping("/admin/addCashbook")
+	@PostMapping("/admin/addCashbook/now/{currentYear}/{currentMonth}/{currentDay}")
 	public String addCashbook(Cashbook cashbook){ //커맨드 객체
 		//디버깅
 		//System.out.println(cashbook);
 		cashbookService.addCashbook(cashbook);
 		return "redirect:/admin/cashbookByMonth"; //response.sendRedirect() 와 동일
 	}
-	@GetMapping("/admin/addCashbook")
-	public String addCashbook(Model model){
+	@GetMapping("/admin/addCashbook/now/{currentYear}/{currentMonth}/{currentDay}")
+	public String addCashbook(Model model,
+			@PathVariable(name = "currentYear", required = true) int currentYear,
+			@PathVariable(name = "currentMonth", required = true) int currentMonth,
+			@PathVariable(name = "currentDay", required = true) int currentDay){
 		List<Category> categoryList = categoryService.getCategoryList();
 		model.addAttribute("categoryList",categoryList);
+		model.addAttribute("currentYear", currentYear);
+		model.addAttribute("currentMonth", currentMonth);
+		model.addAttribute("currentDay", currentDay);
 		
 		return "addCashbook"; //forward 와 동일
 	}
 	
-	@GetMapping("/admin/cashbookByDay")
+	@GetMapping("/admin/cashbookByDay/{target}/{currentYear}/{currentMonth}/{currentDay}") //@GetMapping("/admin/cashbookByDay")
 	public String cashbookByDay(Model model,
-								@RequestParam(name = "target", defaultValue= " ") String target,
-								@RequestParam(name = "currentYear", required = true)int currentYear,
-								@RequestParam(name = "currentMonth", required = true)int currentMonth,
-								@RequestParam(name = "currentDay", required = true)int currentDay) {
+											@PathVariable(name = "target") String target,
+											@PathVariable(name = "currentYear", required = true) int currentYear,
+											@PathVariable(name = "currentMonth", required = true) int currentMonth,
+											@PathVariable(name = "currentDay", required = true) int currentDay) {
 		
 		Calendar targetDay = Calendar.getInstance();
 		targetDay.set(Calendar.YEAR, currentYear);
@@ -66,11 +73,11 @@ public class CashBookController {
 	
 	
 	
-	@GetMapping(value = { "/admin/cashbookByMonth" })
+	@GetMapping(value="/admin/cashbookByMonth/{currentYear}/{currentMonth}")
 	// requestparam으로 paramMonth가 null이면 0으로 바꿔라(int로 형변환을 해야하기 떄문에) =
 	// ("request.getParamater("paramMonth");)
-	public String cashbookByMonth(Model model, @RequestParam(name = "currentYear", defaultValue = "-1") int currentYear,
-			@RequestParam(name = "currentMonth", defaultValue = "-1") int currentMonth) {
+	public String cashbookByMonth(Model model, @PathVariable(name = "currentYear") int currentYear,
+			@PathVariable(name = "currentMonth") int currentMonth) {
 
 		// 1. 요청분석
 		/*
@@ -120,15 +127,15 @@ public class CashBookController {
 		return "cashbookByMonth";
 	}
 	// 수입/지출 삭제
-	@GetMapping("/admin/removeCashbook")
-	public String removeCashbook(@RequestParam(value = "cashbookId") int cashbookId) {
+	@GetMapping("/admin/removeCashbook/{cashbookId}")
+	public String removeCashbook(@PathVariable(value = "cashbookId") int cashbookId) {
 		cashbookService.removeCashbook(cashbookId);
 		return "redirect:/admin/cashbookByMonth";
 	}
 	// 수입/지출 폼
-	@GetMapping("/admin/modifyCashbook")
+	@GetMapping("/admin/modifyCashbook/{cashbookId}")
 	public String modifyCashbook(Model model,
-								@RequestParam(value = "cashbookId")int cashbookId) {
+									@PathVariable(value = "cashbookId")int cashbookId) {
 		Cashbook cashbook = cashbookService.getCashbookByDay(cashbookId);
 		
 		List<Category> categoryList = categoryService.getCategoryList();

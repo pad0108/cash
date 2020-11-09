@@ -16,7 +16,7 @@
 			<table class="table">
 				<tr>
 					<td>ID</td>
-					<td><input type="text" name="noticeId" value="${param.noticeId}" readonly="readonly"></td>
+					<td><input type="text" name="noticeId" value="${notice.noticeId}" readonly="readonly"></td>
 				</tr>
 				<tr>
 					<td>제목</td>

@@ -54,9 +54,9 @@ td{
 							<td style="height:200px;">
 								<h4>${currentYear}</h4>
 								<h1>${currentMonth}</h1>
-								<a href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth-1}" class="btn btn-secondary"> ＜＜ </a>
+								<a href="/admin/cashbookByMonth/${currentYear}/${currentMonth - 1}" class="btn btn-secondary"> ＜＜ </a>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<a href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1}" class="btn btn-secondary"> ＞＞ </a>
+								<a href="/admin/cashbookByMonth/${currentYear}/${currentMonth + 1}" class="btn btn-secondary"> ＞＞ </a>
 							</td>
 						</tr>
 					</table>
@@ -98,7 +98,7 @@ td{
 							<c:if test="${i-(firstDayOfWeek-1) > 0}">
 								<td>
 									<div>
-										<a href="/admin/cashbookByDay?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${i-(firstDayOfWeek-1)}">${i-(firstDayOfWeek-1)}</a>
+										<a href="/admin/cashbookByDay/now/${currentYear}/${currentMonth}/${i-(firstDayOfWeek-1)}">${i-(firstDayOfWeek-1)}</a>
 									</div> <!-- 지출/수입 목록이 있는 날짜를 cashList에서 검색 -->
 									<c:forEach var="c" items="${cashList}">
 										<c:if test="${i-(firstDayOfWeek-1) == c.dday}">

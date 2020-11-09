@@ -12,11 +12,13 @@
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<h1>cashbookListByDay</h1>
 	<div>
-		<a href="/admin/cashbookByDay?target=pre&currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${currentDay}">이전</a>
+		<!--  <a href="/admin/cashbookByDay?target=pre&currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${currentDay}">이전</a>-->
+		<a href="/admin/cashbookByDay/pre/${currentYear}/${currentMonth}/${currentDay}">이전</a>
 		${currentYear}년 ${currentMonth}월 ${currentDay}일
-		<a href="/admin/cashbookByDay?target=next&currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${currentDay}">다음</a>
+		<!--<a href="/admin/cashbookByDay?target=next&currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${currentDay}">다음</a> -->
+		<a href="/admin/cashbookByDay/next/${currentYear}/${currentMonth}/${currentDay}">이후</a>
 	</div>
-	<a href="/admin/addCashbook?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${currentDay}">수입/지출 입력</a>
+	<a href="/admin/addCashbook/now/${currentYear}/${currentMonth}/${currentDay}">수입/지출 입력</a>
 	<table border="1">
 		<thead>
 			<tr>
@@ -38,8 +40,8 @@
 						<td>${c.categoryName}</td>
 						<td>${c.cashbookPrice}</td>
 						<td>${c.cashbookContent}</td>
-						<td><a href="/admin/modifyCashbook?cashbookId=${c.cashbookId}">수정</a></td>
-						<td><a href="/admin/removeCashbook?cashbookId=${c.cashbookId}">삭제</a></td>
+						<td><a href="/admin/modifyCashbook/${c.cashbookId}">수정</a></td>
+						<td><a href="/admin/removeCashbook/${c.cashbookId}">삭제</a></td>
 					</tr>
 				</c:forEach>
 			</c:if>

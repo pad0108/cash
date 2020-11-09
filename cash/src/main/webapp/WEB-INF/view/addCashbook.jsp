@@ -16,7 +16,7 @@
 			<tr>
 				<td>cashbook_date</td>
 				<td>
-					<input type="text" name="cashbookDate" value="${param.currentYear}-${param.currentMonth}-${param.currentDay}" readonly="readonly">
+					<input type="text" name="cashbookDate" value="${currentYear}-${currentMonth}-${currentDay}" readonly="readonly">
 				</td>
 			</tr>
 			<tr>
