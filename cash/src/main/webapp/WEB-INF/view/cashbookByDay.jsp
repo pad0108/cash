@@ -7,26 +7,40 @@
 <title>Insert title here</title>
 <!-- 부트스트랩 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- 구글 css 폰트 숫자 -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
+<style type="text/css">
+td{
+	font-family: 'Noto Sans JP', sans-serif;
+}
+tr{
+	font-family: 'Noto Sans JP', sans-serif;
+}
+button{
+	font-family: 'Noto Sans JP', sans-serif;
+}
+</style>
 </head>
+
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
-	<h1>cashbookListByDay</h1>
-	<div>
+	<div class="container">
+	<div style="text-align:center; margin-top:20px;">
 		<!--  <a href="/admin/cashbookByDay?target=pre&currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${currentDay}">이전</a>-->
-		<a href="/admin/cashbookByDay/pre/${currentYear}/${currentMonth}/${currentDay}">이전</a>
+		<a href="/admin/cashbookByDay/pre/${currentYear}/${currentMonth}/${currentDay}" class="btn btn-outline-info">이전</a>
 		${currentYear}년 ${currentMonth}월 ${currentDay}일
 		<!--<a href="/admin/cashbookByDay?target=next&currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${currentDay}">다음</a> -->
-		<a href="/admin/cashbookByDay/next/${currentYear}/${currentMonth}/${currentDay}">이후</a>
+		<a href="/admin/cashbookByDay/next/${currentYear}/${currentMonth}/${currentDay}" class="btn btn-outline-info">이후</a>
 	</div>
-	<a href="/admin/addCashbook/now/${currentYear}/${currentMonth}/${currentDay}">수입/지출 입력</a>
-	<table border="1">
+	<a href="/admin/addCashbook/now/${currentYear}/${currentMonth}/${currentDay}" class="btn btn-primary" style="float: right; margin-bottom:10px; margin-right:10px;">추가</a>
+	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th>cashbookId</th>
-				<th>cashbookKind</th>
-				<th>categoryName</th>
-				<th>cashbookPrice</th>
-				<th>cashbookContent</th>
+				<th>번호</th>
+				<th>분류</th>
+				<th>태그</th>
+				<th>가격</th>
+				<th>내역</th>
 				<th>수정</th>
 				<th>삭제</th>
 			</tr>
@@ -52,5 +66,6 @@
 			</c:if>
 		</tbody>
 	</table>
+	</div>
 </body>
 </html>

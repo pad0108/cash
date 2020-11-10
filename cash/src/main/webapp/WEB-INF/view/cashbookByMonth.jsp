@@ -8,6 +8,9 @@
 <title>index.jsp</title>
 <!-- 부트스트랩 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- 구글 css 폰트 숫자 -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style type="text/css">
 .sunday {
 	color: #FF0000;
@@ -26,13 +29,51 @@ td{
 .nTable td{
 	vertical-align:middle;
 }
+td{
+	font-family: 'Noto Sans JP', sans-serif;
+}
+tr{
+	font-family: 'Noto Sans JP', sans-serif;
+}
 </style>
 
 </head>
+<script>
+	var memberCountConTxt1= ${sumIn};
+	
+	$({ val : 0 }).animate({ val : memberCountConTxt1 }, {
+	 duration: 2000,
+	step: function() {
+	  var num = numberWithCommas(Math.floor(this.val));
+	  $(".memberCountCon1").text(num);
+	},
+	complete: function() {
+	  var num = numberWithCommas(Math.floor(this.val));
+	  $(".memberCountCon1").text(num);
+	}
+	});
+
+var memberCountConTxt2= ${sumOut};
+	
+	$({ val : 0 }).animate({ val : memberCountConTxt2 }, {
+	 duration: 2000,
+	step: function() {
+	  var num = numberWithCommas(Math.floor(this.val));
+	  $(".memberCountCon2").text(num);
+	},
+	complete: function() {
+	  var num = numberWithCommas(Math.floor(this.val));
+	  $(".memberCountCon2").text(num);
+	}
+	});
+	
+	function numberWithCommas(x) {
+	  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+</script>
 <body>
+	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<div class="container">
-		<h1>index.jsp</h1>
-		<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 		<table style="text-align:center; width:100%; margin-top:10px;">
 			<tr>
 				<td style="width:20%;">
@@ -40,8 +81,8 @@ td{
 						<tr>
 							<td class="table-active" style="height:10px;">이번달 수입</td>
 						</tr>
-						<tr>
-							<td style="height:200px;">${sumIn}원</td>
+						<tr>						
+							<td style="height:200px;"><div class="memberCountCon1"></div>원</td>
 						</tr>
 					</table>
 				</td>
@@ -67,7 +108,7 @@ td{
 							<td class="table-active" style="height:10px;">이번달 지출</td>
 						</tr>
 						<tr>
-							<td style="height:200px;">${sumOut}원</td>
+							<td style="height:200px;"><div class="memberCountCon2"></div>원</td>
 						</tr>
 					</table>
 				</td>
@@ -78,7 +119,7 @@ td{
 		<div>
 			<table border="1" width="100%">
 				<thead>
-					<tr>
+					<tr class="table-active">
 						<th><div class="sunday">일</div></th>
 						<th>월</th>
 						<th>화</th>
