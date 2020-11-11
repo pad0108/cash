@@ -89,4 +89,35 @@
 		FROM cashbook
 	WHERE cashbook_id = #{cashbookId}
   </select>
+  <select id="selectCashbookListByPage" parameterType="java.util.Map" resultType="kr.co.gdu.cash.vo.Cashbook">
+		SELECT
+        	cashbook_id cashbookId,
+        	cashbook_kind cashbookKind,
+        	category_name categoryName,
+        	cashbook_price cashbookPrice,
+        	cashbook_content cashbookContent,
+        	cashbook_date cashbookDate,
+        	create_date createDate,
+        	update_date updateDate
+     	FROM cashbook
+     	ORDER BY cashbook_date DESC, cashbook_id DESC 
+     	Limit #{beginRow},#{rowPerPage}
+	</select>
+
+  <select id="selectCashbookListAll" resultType="kr.co.gdu.cash.vo.Cashbook">
+  	SELECT
+        cashbook_id cashbookId,
+        cashbook_kind cashbookKind,
+        category_name categoryName,
+        cashbook_price cashbookPrice,
+        cashbook_content cashbookContent,
+        cashbook_date cashbookDate,
+        create_date createDate,
+        update_date updateDate
+     FROM cashbook
+     ORDER BY cashbook_date DESC, cashbook_id DESC
+  </select>
+  <select id="selectCashbookCount" resultType="Integer">
+  		SELECT COUNT(*) FROM cashbook
+	</select>
 </mapper>

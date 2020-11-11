@@ -58,4 +58,18 @@ public class CashbookService {
 		
 		return cashbook;
 	}
+	//수입/지출 표
+	public List<Cashbook> getCashbookListByPage(int currentPage, int rowPerPage) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("beginRow", (currentPage-1)*rowPerPage);
+		map.put("rowPerPage", rowPerPage);
+		return cashbookMapper.selectCashbookListByPage(map);
+	}
+	public List<Cashbook> getCashbookListAll(){
+		return cashbookMapper.selectCashbookListAll();
+	}
+	//페이지 수
+	public int getCountCashbook() {
+		return cashbookMapper.selectCashbookCount();
+	}
 }

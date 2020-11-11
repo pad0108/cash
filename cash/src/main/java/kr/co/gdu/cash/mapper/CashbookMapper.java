@@ -21,5 +21,11 @@ public interface CashbookMapper {
 	int updateCashbook(Cashbook cashbook);
 	//상세 보기
 	Cashbook selectCashbookByDay(int cashbookId);
-	
+	//수입/지출 표
+	List<Cashbook> selectCashbookListByPage(Map<String, Object> map); 
+
+	//전체 cashbookList -> 엑셀 파일
+	List<Cashbook> selectCashbookListAll();
+	//페이지 수
+	int selectCashbookCount();
 }
