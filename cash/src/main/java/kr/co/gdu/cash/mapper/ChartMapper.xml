@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.gdu.cash.mapper.ChartMapper">
+	<select id="selectTotalOutByYear" parameterType="int" resultType="java.util.Map">
+		SELECT YEAR(cashbook_date) AS year,
+			sum(case when month(cashbook_date)=1 then cashbook_price END) january,
+			sum(case when month(cashbook_date)=2 then cashbook_price END) february,
+			sum(case when month(cashbook_date)=3 then cashbook_price END) march,
+			sum(case when month(cashbook_date)=4 then cashbook_price END) april,
+			sum(case when month(cashbook_date)=5 then cashbook_price END) may,
+			sum(case when month(cashbook_date)=6 then cashbook_price END) june,
+			sum(case when month(cashbook_date)=7 then cashbook_price END) july,
+			sum(case when month(cashbook_date)=8 then cashbook_price END) august,
+			sum(case when month(cashbook_date)=9 then cashbook_price END) september,
+			sum(case when month(cashbook_date)=10 then cashbook_price END) october,
+			sum(case when month(cashbook_date)=11 then cashbook_price END) november,
+			sum(case when month(cashbook_date)=12 then cashbook_price END) december
+		FROM cashbook
+		WHERE YEAR(cashbook_date) = #{year} AND cashbook_kind = "지출"
+		GROUP BY Year(cashbook_date)
+	</select>
+	<select id="selectTotalComeByYear" parameterType="int" resultType="java.util.Map">
+		SELECT YEAR(cashbook_date) AS year,
+			sum(case when month(cashbook_date)=1 then cashbook_price END) january,
+			sum(case when month(cashbook_date)=2 then cashbook_price END) february,
+			sum(case when month(cashbook_date)=3 then cashbook_price END) march,
+			sum(case when month(cashbook_date)=4 then cashbook_price END) april,
+			sum(case when month(cashbook_date)=5 then cashbook_price END) may,
+			sum(case when month(cashbook_date)=6 then cashbook_price END) june,
+			sum(case when month(cashbook_date)=7 then cashbook_price END) july,
+			sum(case when month(cashbook_date)=8 then cashbook_price END) august,
+			sum(case when month(cashbook_date)=9 then cashbook_price END) september,
+			sum(case when month(cashbook_date)=10 then cashbook_price END) october,
+			sum(case when month(cashbook_date)=11 then cashbook_price END) november,
+			sum(case when month(cashbook_date)=12 then cashbook_price END) december
+		FROM cashbook
+		WHERE YEAR(cashbook_date) = #{year} AND cashbook_kind = "수입"
+		GROUP BY Year(cashbook_date)
+	</select>
+	<select id="selectAvgOutByYear" parameterType="int" resultType="java.util.Map">
+		SELECT YEAR(cashbook_date) AS year,
+			truncate(AVG(case when month(cashbook_date)=1 then cashbook_price END), 0) january,
+			truncate(AVG(case when month(cashbook_date)=2 then cashbook_price END), 0)february,
+			truncate(AVG(case when month(cashbook_date)=3 then cashbook_price END), 0)march,
+			truncate(AVG(case when month(cashbook_date)=4 then cashbook_price END), 0)april,
+			truncate(AVG(case when month(cashbook_date)=5 then cashbook_price END), 0)may,
+			truncate(AVG(case when month(cashbook_date)=6 then cashbook_price END), 0)june,
+			truncate(AVG(case when month(cashbook_date)=7 then cashbook_price END), 0)july,
+			truncate(AVG(case when month(cashbook_date)=8 then cashbook_price END), 0)august,
+			truncate(AVG(case when month(cashbook_date)=9 then cashbook_price END), 0)september,
+			truncate(AVG(case when month(cashbook_date)=10 then cashbook_price END), 0)october,
+			truncate(AVG(case when month(cashbook_date)=11 then cashbook_price END), 0)november,
+			truncate(AVG(case when month(cashbook_date)=12 then cashbook_price END), 0)december
+		FROM cashbook
+		WHERE YEAR(cashbook_date) = 2019 AND cashbook_kind = "지출"
+		GROUP BY Year(cashbook_date)
+	</select>
+	<select id="selectAvgComeByYear" parameterType="int" resultType="java.util.Map">
+		SELECT YEAR(cashbook_date) AS year,
+			truncate(AVG(case when month(cashbook_date)=1 then cashbook_price END), 0) january,
+			truncate(AVG(case when month(cashbook_date)=2 then cashbook_price END), 0)february,
+			truncate(AVG(case when month(cashbook_date)=3 then cashbook_price END), 0)march,
+			truncate(AVG(case when month(cashbook_date)=4 then cashbook_price END), 0)april,
+			truncate(AVG(case when month(cashbook_date)=5 then cashbook_price END), 0)may,
+			truncate(AVG(case when month(cashbook_date)=6 then cashbook_price END), 0)june,
+			truncate(AVG(case when month(cashbook_date)=7 then cashbook_price END), 0)july,
+			truncate(AVG(case when month(cashbook_date)=8 then cashbook_price END), 0)august,
+			truncate(AVG(case when month(cashbook_date)=9 then cashbook_price END), 0)september,
+			truncate(AVG(case when month(cashbook_date)=10 then cashbook_price END), 0)october,
+			truncate(AVG(case when month(cashbook_date)=11 then cashbook_price END), 0)november,
+			truncate(AVG(case when month(cashbook_date)=12 then cashbook_price END), 0)december
+		FROM cashbook
+		WHERE YEAR(cashbook_date) = 2019 AND cashbook_kind = "수입"
+		GROUP BY Year(cashbook_date)
+	</select>
+	
+	<select id="selectTotalCompare" resultType="kr.co.gdu.cash.vo.YearIncome">
+		SELECT YEAR(cashbook_date) 'year',
+         sum(case when cashbook_kind='수입' then cashbook_price END) 'income'
+         FROM cashbook
+         WHERE YEAR(cashbook_date)
+         GROUP BY Year(cashbook_date)
+	</select>
+</mapper>

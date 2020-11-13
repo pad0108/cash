@@ -14,7 +14,7 @@
 		<li class="nav-item active"><a class="nav-link"
 			href="/admin/logout" >로그아웃</a></li>
 		<li class="nav-item active"><a class="nav-link"
-			href="chart1.jsp" >chart</a></li>
+			href="totalOutbyYear.jsp" >chart</a></li>
 		<li class="nav-item active"><a class="nav-link"
 			href="/admin/addMember" >사용자 추가</a></li>
 		
