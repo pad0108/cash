@@ -21,38 +21,42 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script>
-$
-	.ajax({
+$.ajax({
 		url : '/totalIncomeCompare',
 		type : 'get',
 		success : function(data) {
-
-			/*$(data).each(function(key, yearIncome) {
-				chartData.data.labels.push(yearIncome.year);
-				chartData.data.datasets[0].data.push(yearIncome.income);
-			});*/
-			
-			let pieCtx = $('#pieChart');
-			let pieChart = new Chart(pieCtx, {
+			let chartData = {
 				type: 'pie',
 				data:{
-					labels:['수입','지출'], // 항목
+					labels:['2018년 수입','2019년 수입','2020년 수입'], // 항목
 					datasets:[{
 						backgroundColor:[
 							'rgb(255, 128, 128)',
-							 'rgb(128, 255, 255)'
+							'rgb(128, 255, 128)',
+                            'rgb(128, 255, 192)'
+							 
 						],
 						borderColor:[
 							'rgba(255, 99, 132, 1)',
-							 'rgba(255, 99, 132, 1)'
+							 'rgba(153, 102, 255, 1)',
+	                          'rgba(255, 159, 64, 1)'
+							 
 						],
-						data:[50, 100] // 데이터
+						data:[736717030,685539880,1574781287] // 데이터
 					}],
 					label:''
 				},
 				options:{}
-				
-					});
+			};
+
+			/*chartData.data.labels.push("지출");
+			console.log(chartData.data.labels);
+
+			chartData.data.datasets[0].data.push(100);
+			console.log(chartData.data.datasets[0].data);*/
+			
+			let pieCtx = $('#piechart');
+			let pieChart = new Chart(pieCtx, chartData);
 		}
 	});
 </script>

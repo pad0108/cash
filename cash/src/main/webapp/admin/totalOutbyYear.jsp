@@ -16,7 +16,7 @@
 	<div><!-- 호출 -->
 		<span>연도별 지출액 :</span>
 		<input type="text" id="year">
-		<button id="totalOutByYear" type="button">Chart</button>
+		<button id="totalOutByYear" type="button">확인</button>
 	</div>
 	<div>
 		<canvas id="chart"></canvas>

@@ -17,7 +17,7 @@ public interface ChartMapper {
 	public Map<String, Object> selectAvgOutByYear(int year);
 	//연도에 따른 월별 수입 평균
 	public Map<String, Object> selectAvgComeByYear(int year);
-	
+	//3년 간 수입 비교
 	public List<YearIncome> selectTotalCompare();
 	
 	

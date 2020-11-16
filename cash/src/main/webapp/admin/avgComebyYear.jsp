@@ -14,9 +14,9 @@
 <jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/view/inc/chartMenu.jsp"></jsp:include>
 	<div><!-- 호출 -->
-		<span>연도별 평균 지출액 :</span>
+		<span>연도별 평균 수입액 :</span>
 		<input type="text" id="year">
-		<button id="avgOutByYear" type="button">확인</button>
+		<button id="avgComebyYear" type="button">확인</button>
 	</div>
 	<div>
 		<canvas id="chart"></canvas>
@@ -25,10 +25,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script>
-	$('#avgOutByYear').click(
+	$('#avgComebyYear').click(
 			function() {
 				$.ajax({
-					url : '/avgOutbyYear/' + $('#year').val(),
+					url : '/avgComebyYear/' + $('#year').val(),
 					type : 'get',
 					success : function(data) {
 						console.log(data);
@@ -46,7 +46,7 @@
 										'November', 'December' ],
 								datasets : [ {
 									label : $('#year').val()+'년 월별 지출',
-									backgroundColor : [ 'rgb(255, 128, 128)'
+									backgroundColor : [ 'rgb(255, 128, 255)'
 
 									],
 									borderColor : [ 
