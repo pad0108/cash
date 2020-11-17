@@ -8,8 +8,8 @@
 		<li class="nav-item active"><a class="nav-link" href="/admin/avgOutbyYear.jsp">지출 평균</a></li>
 		<li class="nav-item active"><a class="nav-link" href="/admin/avgComebyYear.jsp">수입 평균</a></li>
 		<li class="nav-item active"><a class="nav-link" href="/admin/totalIncomeCompare.jsp">수입 비교</a></li>
-		<li class="nav-item active"><a class="nav-link" href="/admin/chart6.jsp">chart6</a></li>
-		<li class="nav-item active"><a class="nav-link" href="/admin/chart7.jsp">chart7</a></li>
+		<li class="nav-item active"><a class="nav-link" href="/admin/minMaxIncome.jsp">최대 최소 수입액</a></li>
+		<li class="nav-item active"><a class="nav-link" href="/admin/minMaxOut.jsp">최대 최소 지출액</a></li>
 		<li class="nav-item active"><a class="nav-link" href="/admin/chart8.jsp">chart8</a></li>
 		<li class="nav-item active"><a class="nav-link" href="/admin/chart9.jsp">chart9</a></li>
 	</ul>

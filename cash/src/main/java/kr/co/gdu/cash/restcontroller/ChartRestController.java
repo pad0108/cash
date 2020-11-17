@@ -37,7 +37,17 @@ public class ChartRestController {
 	}
 	//최근 연도 수입 비교
 	@GetMapping("/totalIncomeCompare")
-	public List<YearIncome> totalIncomeCompare(){
+	public Map<String, Object> totalIncomeCompare(){
 		return chartService.getTotalCompare();
+	}
+	//연도별 최대 최소 수입
+	@GetMapping("/minMaxIncome/{year}")
+	public Map<String, Object>minMaxIncome(@PathVariable(name = "year") int year){
+		return chartService.getMinMaxIncome(year);
+	}
+	//연도별 최대 최소 지출
+	@GetMapping("/minMaxOut/{year}")
+	public Map<String, Object>minMaxOut(@PathVariable(name = "year") int year){
+		return chartService.getMinMaxOut(year);
 	}
 }

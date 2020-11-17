@@ -46,11 +46,11 @@
 										'November', 'December' ],
 								datasets : [ {
 									label : $('#year').val()+'년 월별 지출',
-									backgroundColor : [ 'rgb(255, 128, 128)'
+									backgroundColor : [ 'rgba(255, 128, 128, 0.5)'
 
 									],
 									borderColor : [ 
-											'rgba(255, 159, 64, 1)' 
+											'rgba(255, 159, 64, 0.5)' 
 											],
 									//data 속성의 배열값은 ajax호출 후 결과값으로 채워야 한다.
 									data : [ data.january, data.february,

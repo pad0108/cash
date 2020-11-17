@@ -25,24 +25,25 @@ $.ajax({
 		url : '/totalIncomeCompare',
 		type : 'get',
 		success : function(data) {
+			console.log(data);
 			let chartData = {
 				type: 'pie',
 				data:{
 					labels:['2018년 수입','2019년 수입','2020년 수입'], // 항목
 					datasets:[{
 						backgroundColor:[
-							'rgb(255, 128, 128)',
-							'rgb(128, 255, 128)',
-                            'rgb(128, 255, 192)'
+							'rgba(255, 128, 128 ,0.5)',
+							'rgba(128, 255, 128 ,0.5)',
+                            'rgba(128, 255, 192 ,0.5)'
 							 
 						],
 						borderColor:[
-							'rgba(255, 99, 132, 1)',
-							 'rgba(153, 102, 255, 1)',
-	                          'rgba(255, 159, 64, 1)'
+							'rgba(255, 99, 132, 0.5)',
+							 'rgba(153, 102, 255, 0.5)',
+	                          'rgba(255, 159, 64, 0.5)'
 							 
 						],
-						data:[736717030,685539880,1574781287] // 데이터
+						data:[data["2018year"],data["2019year"], data["2020year"]] // 데이터
 					}],
 					label:''
 				},

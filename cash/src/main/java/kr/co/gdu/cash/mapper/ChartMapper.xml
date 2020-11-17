@@ -54,7 +54,7 @@
 			truncate(AVG(case when month(cashbook_date)=11 then cashbook_price END), 0)november,
 			truncate(AVG(case when month(cashbook_date)=12 then cashbook_price END), 0)december
 		FROM cashbook
-		WHERE YEAR(cashbook_date) = 2019 AND cashbook_kind = "지출"
+		WHERE YEAR(cashbook_date) = #{year} AND cashbook_kind = "지출"
 		GROUP BY Year(cashbook_date)
 	</select>
 	<select id="selectAvgComeByYear" parameterType="int" resultType="java.util.Map">
@@ -72,15 +72,34 @@
 			truncate(AVG(case when month(cashbook_date)=11 then cashbook_price END), 0)november,
 			truncate(AVG(case when month(cashbook_date)=12 then cashbook_price END), 0)december
 		FROM cashbook
-		WHERE YEAR(cashbook_date) = 2019 AND cashbook_kind = "수입"
+		WHERE YEAR(cashbook_date) = #{year} AND cashbook_kind = "수입"
 		GROUP BY Year(cashbook_date)
 	</select>
 	
-	<select id="selectTotalCompare" resultType="kr.co.gdu.cash.vo.YearIncome">
-		SELECT YEAR(cashbook_date) 'year',
-         sum(case when cashbook_kind='수입' then cashbook_price END) 'income'
+	<select id="selectTotalCompare" resultType="java.util.Map">
+		SELECT 
+	         sum(case when year(cashbook_date)=2018 then cashbook_price END) '2018year',
+	         sum(case when year(cashbook_date)=2019 then cashbook_price END) '2019year',
+	         sum(case when year(cashbook_date)=2020 then cashbook_price END) '2020year'
          FROM cashbook
-         WHERE YEAR(cashbook_date)
-         GROUP BY Year(cashbook_date)
+         WHERE YEAR(cashbook_date) AND cashbook_kind='수입'
+	</select>
+	<select id="selectMinMaxIncome" parameterType="int" resultType="java.util.Map">
+		SELECT
+			YEAR(cashbook_date) 'year',
+			MIN(cashbook_price) minIncome,
+			MAX(cashbook_price) maxIncome
+		FROM cashbook
+		WHERE YEAR(cashbook_date)= #{year} AND cashbook_kind = "수입"
+		GROUP BY YEAR(cashbook_date)
+	</select>
+	<select id="selectMinMaxOut" parameterType="int" resultType="java.util.Map">
+		SELECT
+		YEAR(cashbook_date) 'year',
+			MIN(cashbook_price) minOut,
+			MAX(cashbook_price) maxOut
+		FROM cashbook
+		WHERE YEAR(cashbook_date)= #{year} AND cashbook_kind = "지출"
+		GROUP BY YEAR(cashbook_date)
 	</select>
 </mapper>

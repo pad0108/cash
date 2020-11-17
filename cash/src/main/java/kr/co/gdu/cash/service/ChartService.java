@@ -1,6 +1,6 @@
 package kr.co.gdu.cash.service;
 
-import java.util.List;
+
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.co.gdu.cash.mapper.ChartMapper;
-import kr.co.gdu.cash.vo.YearIncome;
 
 @Service
 @Transactional
@@ -27,7 +26,13 @@ public class ChartService {
 	public Map<String, Object> getAvgComeByYear(int year){
 		return chartMapper.selectAvgOutByYear(year);
 	}
-	public List<YearIncome> getTotalCompare(){
+	public Map<String, Object> getTotalCompare(){
 		return chartMapper.selectTotalCompare();
+	}
+	public Map<String, Object> getMinMaxIncome(int year){
+		return chartMapper.selectMinMaxIncome(year);
+	}
+	public Map<String, Object> getMinMaxOut(int year){
+		return chartMapper.selectMinMaxOut(year);
 	}
 }

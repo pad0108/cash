@@ -18,7 +18,9 @@ public interface ChartMapper {
 	//연도에 따른 월별 수입 평균
 	public Map<String, Object> selectAvgComeByYear(int year);
 	//3년 간 수입 비교
-	public List<YearIncome> selectTotalCompare();
-	
-	
+	public Map<String, Object> selectTotalCompare();
+	//연도 별 최대, 최소 수입
+	public Map<String, Object> selectMinMaxIncome(int year);
+	//연도 별 최대, 최소 지출
+	public Map<String, Object> selectMinMaxOut(int year);
 }
