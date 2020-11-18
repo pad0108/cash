@@ -10,7 +10,6 @@
 		<li class="nav-item active"><a class="nav-link" href="/admin/totalIncomeCompare.jsp">수입 비교</a></li>
 		<li class="nav-item active"><a class="nav-link" href="/admin/minMaxIncome.jsp">최대 최소 수입액</a></li>
 		<li class="nav-item active"><a class="nav-link" href="/admin/minMaxOut.jsp">최대 최소 지출액</a></li>
-		<li class="nav-item active"><a class="nav-link" href="/admin/chart8.jsp">chart8</a></li>
-		<li class="nav-item active"><a class="nav-link" href="/admin/chart9.jsp">chart9</a></li>
+		<li class="nav-item active"><a class="nav-link" href="/admin/totalOutCompare.jsp">지출 비교</a></li>
 	</ul>
 </nav>

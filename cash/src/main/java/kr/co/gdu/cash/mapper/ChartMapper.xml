@@ -102,4 +102,12 @@
 		WHERE YEAR(cashbook_date)= #{year} AND cashbook_kind = "지출"
 		GROUP BY YEAR(cashbook_date)
 	</select>
+	<select id="selectOutCompare" resultType="java.util.Map">
+		SELECT 
+	         sum(case when year(cashbook_date)=2018 then cashbook_price END) '2018year',
+	         sum(case when year(cashbook_date)=2019 then cashbook_price END) '2019year',
+	         sum(case when year(cashbook_date)=2020 then cashbook_price END) '2020year'
+         FROM cashbook
+         WHERE YEAR(cashbook_date) AND cashbook_kind='지출'
+	</select>
 </mapper>

@@ -26,13 +26,16 @@ public class ChartService {
 	public Map<String, Object> getAvgComeByYear(int year){
 		return chartMapper.selectAvgOutByYear(year);
 	}
-	public Map<String, Object> getTotalCompare(){
-		return chartMapper.selectTotalCompare();
-	}
 	public Map<String, Object> getMinMaxIncome(int year){
 		return chartMapper.selectMinMaxIncome(year);
 	}
 	public Map<String, Object> getMinMaxOut(int year){
 		return chartMapper.selectMinMaxOut(year);
+	}
+	public Map<String, Object> getTotalCompare(){
+		return chartMapper.selectTotalCompare();
+	}
+	public Map<String, Object> getTotalOutCompare(){
+		return chartMapper.selectOutCompare();
 	}
 }

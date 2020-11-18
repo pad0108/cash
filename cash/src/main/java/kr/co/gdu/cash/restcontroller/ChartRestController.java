@@ -35,11 +35,6 @@ public class ChartRestController {
 	public Map<String, Object >avgComebyYear(@PathVariable(name = "year") int year){
 		return chartService.getAvgComeByYear(year);
 	}
-	//최근 연도 수입 비교
-	@GetMapping("/totalIncomeCompare")
-	public Map<String, Object> totalIncomeCompare(){
-		return chartService.getTotalCompare();
-	}
 	//연도별 최대 최소 수입
 	@GetMapping("/minMaxIncome/{year}")
 	public Map<String, Object>minMaxIncome(@PathVariable(name = "year") int year){
@@ -49,5 +44,15 @@ public class ChartRestController {
 	@GetMapping("/minMaxOut/{year}")
 	public Map<String, Object>minMaxOut(@PathVariable(name = "year") int year){
 		return chartService.getMinMaxOut(year);
+	}
+	//3년간 수입 비교
+	@GetMapping("/totalIncomeCompare")
+	public Map<String, Object> totalIncomeCompare(){
+		return chartService.getTotalCompare();
+	}
+	//3년간 지출 비교
+	@GetMapping("/totalOutCompare")
+	public Map<String, Object>totalOutCompare(){
+		return chartService.getTotalOutCompare();
 	}
 }
