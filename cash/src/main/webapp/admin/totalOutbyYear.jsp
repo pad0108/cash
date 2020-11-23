@@ -13,6 +13,7 @@
 <body>
 <jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/view/inc/chartMenu.jsp"></jsp:include>
+<div class="container">
 	<div><!-- 호출 -->
 		<span>연도별 지출액 :</span>
 		<input type="text" id="year">
@@ -21,6 +22,7 @@
 	<div>
 		<canvas id="chart"></canvas>
 	</div>
+</div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
