@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.gdu.cash.mapper.NoticefileMapper">
+	<insert id="insertNoticefile" parameterType="kr.co.gdu.cash.vo.Noticefile">
+		INSERT INTO noticefile (
+			notice_id,
+			noticefile_name,
+			noticefile_type,
+			noticefile_size
+		) VALUES (
+			#{noticeId},
+			#{noticefileName},
+			#{noticefileType},
+			#{noticefileSize}
+		)
+	</insert>
+	<delete id="deleteNoticefile" parameterType="int">
+		DELETE FROM noticefile
+		WHERE notice_id = #{noticeId}
+	</delete>
+	<select id="selectNoticeFileNameList" parameterType="int" resultType="String">
+		SELECT noticefile_name
+		FROM noticefile
+		WHERE notice_id =  #{noticeId}
+	</select>
+	<delete id="deleteNoticefileOne" parameterType="Integer">
+		DELETE FROM noticefile
+		WHERE noticefile_id = #{noticefileId}
+	</delete>
+</mapper>

@@ -29,7 +29,7 @@ button{
 		<h1 style="text-align:center;">Home</h1>
 		<!-- 공지 -->
 		<div>
-			<h3 style="text-align:center;">공지사항</h3> <a href="/admin/noticeList" class="btn btn-outline-primary btn-sm"style="float: right;">더보기</a>
+			<h3 style="text-align:center;">공지사항</h3> <a href="/admin/noticeList/1" class="btn btn-outline-primary btn-sm"style="float: right;">더보기</a>
 		</div>
 		<div>
 			<table class="table table-hover" style="table-layout:fixed;  width:100%">

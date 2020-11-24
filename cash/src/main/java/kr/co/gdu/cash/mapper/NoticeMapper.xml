@@ -3,6 +3,38 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.gdu.cash.mapper.NoticeMapper">
+	<insert id="insertNotice" parameterType="kr.co.gdu.cash.vo.Notice">
+		<selectKey resultType="int" keyProperty="noticeId" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO notice(
+			notice_title,
+			notice_content,
+			notice_date
+		) VALUES (
+			#{noticeTitle},
+			#{noticeContent},
+			NOW()
+		)
+	</insert>
+	<resultMap type="kr.co.gdu.cash.vo.Notice" id="selectNoticeOneResult">
+		<result property="noticeId" column="notice_id"/>
+		<result property="noticeTitle" column="notice_title"/>
+		<result property="noticeContent" column="notice_content"/>
+		<result property="noticeDate" column="notice_date"/>
+		<collection property="noticefileList" ofType="kr.co.gdu.cash.vo.Noticefile">
+			<result property="noticefileId" column="noticefile_id"/>
+			<result property="noticeId" column="notice_id"/>
+			<result property="noticefileName" column="noticefile_name"/>
+			<result property="noticefileType" column="noticefile_type"/>
+			<result property="noticefileSize" column="noticefile_size"/>
+		</collection>
+		<collection property="commentList" ofType="kr.co.gdu.cash.vo.Comment">
+			<result property="commentId" column="comment_id"/>
+			<result property="noticeId" column="notice_id"/>
+			<result property="commentContent" column="comment_content"/>
+		</collection>
+	</resultMap>
 	<select id="selectLatestNoticeList" resultType="kr.co.gdu.cash.vo.Notice">
 		select
 			notice_id as noticeId,
@@ -24,17 +56,7 @@
 		ORDER BY notice_date DESC
 		LIMIT #{beginRow}, #{rowPerPage}
 	</select>
-	<insert id="insertNotice" parameterType="kr.co.gdu.cash.vo.Notice">
-		INSERT INTO notice(
-			notice_title,
-			notice_content,
-			notice_date
-		) VALUES (
-			#{noticeTitle},
-			#{noticeContent},
-			NOW()
-		)
-	</insert>
+
 	<delete id="deleteNotice" parameterType="int">
 		DELETE
 		FROM notice
@@ -47,14 +69,26 @@
 			notice_date = NOW()
 		WHERE notice_id = #{noticeId}
 	</update>
-	<select id="selectNoticeOne" parameterType="int" resultType="kr.co.gdu.cash.vo.Notice">
-		SELECT
-			notice_id noticeId,
-			notice_title noticeTitle,
-			notice_content noticeContent,
-			notice_date noticeDate
-		FROM notice
-		WHERE notice_id = #{noticeId}
+	<select id="selectNoticeOne" resultMap="selectNoticeOneResult">
+ 	 SELECT
+			n.notice_id ,
+			n.notice_title ,
+			n.notice_content ,
+			n.notice_date,
+			nf.noticefile_id,
+			nf.notice_id,
+			nf.noticefile_name,
+			nf.noticefile_type,
+			nf.noticefile_size,
+			c.comment_id,
+			c.notice_id,
+			c.comment_content
+		FROM notice n
+		LEFT JOIN noticefile nf
+			ON n.notice_id = nf.notice_id 
+		LEFT JOIN comment c
+			on n.notice_id = c.notice_id
+		WHERE n.notice_id = #{noticeId}
 	</select>
 	<select id="selectNoticeCount" resultType="Integer">
   		SELECT COUNT(*) FROM notice
