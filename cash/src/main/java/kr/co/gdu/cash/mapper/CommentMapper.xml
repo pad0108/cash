@@ -4,11 +4,13 @@
 	<insert id="insertComment" parameterType="kr.co.gdu.cash.vo.Notice">
 		INSERT INTO comment
 		(
-			board_id,
-			comment_content
+			notice_id,
+			comment_content,
+			comment_date
 		)VALUES(
-			#{boardId},
-			#{commentContent}
+			#{noticeId},
+			#{commentContent},
+			NOW()
 		)
 	</insert>
 	<delete id="deleteComment" parameterType="int">

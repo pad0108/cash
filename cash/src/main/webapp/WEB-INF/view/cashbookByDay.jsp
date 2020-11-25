@@ -27,12 +27,12 @@ button{
 	<div class="container">
 	<div style="text-align:center; margin-top:20px;">
 		<!--  <a href="/admin/cashbookByDay?target=pre&currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${currentDay}">이전</a>-->
-		<a href="/admin/cashbookByDay/pre/${currentYear}/${currentMonth}/${currentDay}" class="btn btn-outline-info">이전</a>
+		<a href="${pageContext.request.contextPath}/admin/cashbookByDay/pre/${currentYear}/${currentMonth}/${currentDay}" class="btn btn-outline-info">이전</a>
 		${currentYear}년 ${currentMonth}월 ${currentDay}일
 		<!--<a href="/admin/cashbookByDay?target=next&currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${currentDay}">다음</a> -->
-		<a href="/admin/cashbookByDay/next/${currentYear}/${currentMonth}/${currentDay}" class="btn btn-outline-info">이후</a>
+		<a href="${pageContext.request.contextPath}/admin/cashbookByDay/next/${currentYear}/${currentMonth}/${currentDay}" class="btn btn-outline-info">이후</a>
 	</div>
-	<a href="/admin/addCashbook/now/${currentYear}/${currentMonth}/${currentDay}" class="btn btn-primary" style="float: right; margin-bottom:10px; margin-right:10px;">추가</a>
+	<a href="${pageContext.request.contextPath}/admin/addCashbook/now/${currentYear}/${currentMonth}/${currentDay}" class="btn btn-primary" style="float: right; margin-bottom:10px; margin-right:10px;">추가</a>
 	<table class="table table-hover">
 		<thead>
 			<tr>
@@ -54,8 +54,8 @@ button{
 						<td>${c.categoryName}</td>
 						<td>${c.cashbookPrice}</td>
 						<td>${c.cashbookContent}</td>
-						<td><a href="/admin/modifyCashbook/${c.cashbookId}">수정</a></td>
-						<td><a href="/admin/removeCashbook/${c.cashbookId}">삭제</a></td>
+						<td><a href="${pageContext.request.contextPath}/admin/modifyCashbook/${c.cashbookId}">수정</a></td>
+						<td><a href="${pageContext.request.contextPath}/admin/removeCashbook/${c.cashbookId}">삭제</a></td>
 					</tr>
 				</c:forEach>
 			</c:if>

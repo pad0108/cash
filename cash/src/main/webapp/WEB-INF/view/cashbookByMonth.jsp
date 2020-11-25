@@ -72,7 +72,7 @@ var memberCountConTxt2= ${sumOut};
 	}
 </script>
 <body>
-	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
+	<jsp:include page="${pageContext.request.contextPath}/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<div class="container">
 		<table style="text-align:center; width:100%; margin-top:10px;">
 			<tr>
@@ -95,9 +95,9 @@ var memberCountConTxt2= ${sumOut};
 							<td style="height:200px;">
 								<h4>${currentYear}</h4>
 								<h1>${currentMonth}</h1>
-								<a href="/admin/cashbookByMonth/${currentYear}/${currentMonth - 1}" class="btn btn-secondary"> ＜＜ </a>
+								<a href="${pageContext.request.contextPath}/admin/cashbookByMonth/${currentYear}/${currentMonth - 1}" class="btn btn-secondary"> ＜＜ </a>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<a href="/admin/cashbookByMonth/${currentYear}/${currentMonth + 1}" class="btn btn-secondary"> ＞＞ </a>
+								<a href="${pageContext.request.contextPath}/admin/cashbookByMonth/${currentYear}/${currentMonth + 1}" class="btn btn-secondary"> ＞＞ </a>
 							</td>
 						</tr>
 					</table>

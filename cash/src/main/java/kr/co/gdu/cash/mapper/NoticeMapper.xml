@@ -33,6 +33,7 @@
 			<result property="commentId" column="comment_id"/>
 			<result property="noticeId" column="notice_id"/>
 			<result property="commentContent" column="comment_content"/>
+			<result property="commentDate" column="comment_date"/>
 		</collection>
 	</resultMap>
 	<select id="selectLatestNoticeList" resultType="kr.co.gdu.cash.vo.Notice">
@@ -82,7 +83,8 @@
 			nf.noticefile_size,
 			c.comment_id,
 			c.notice_id,
-			c.comment_content
+			c.comment_content,
+			c.comment_date
 		FROM notice n
 		LEFT JOIN noticefile nf
 			ON n.notice_id = nf.notice_id 

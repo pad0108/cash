@@ -36,7 +36,7 @@ $(document).ready(function(){
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
-	<form method="post" action="/admin/addMember">
+	<form method="post" action="${pageContext.request.contextPath}/admin/addMember">
 		<div>
 			ID:<input type="text" id="id" name="id">
 		</div>

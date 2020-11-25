@@ -24,7 +24,7 @@ button{
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp" />
 	<div class="container">
-	<form method="post" action="/admin/modifyCashbook">
+	<form method="post" action="${pageContext.request.contextPath}/admin/modifyCashbook">
 		<table class="table">
 			<tr>	
 				<td>번호</td>

@@ -17,8 +17,10 @@ import kr.co.gdu.cash.vo.*;
 @Transactional
 public class NoticeService {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-	//파일 경로 지정
-	private final String PATH = "D:\\workspace\\git-workspace\\cash\\cash\\src\\main\\webapp\\upload\\";
+	//파일 경로 지정 학원 PC
+	//private final String PATH = "D:\\workspace\\git-workspace\\cash\\cash\\src\\main\\webapp\\upload\\";
+	//파일 경로 지정 집 PC
+	private final String PATH = "D:\\stswork\\cash\\cash\\src\\main\\webapp\\upload\\";
 	@Autowired private NoticeMapper noticeMapper;
 	@Autowired private CashbookMapper cashbookMapper;
 	@Autowired private NoticefileMapper noticefileMapper;

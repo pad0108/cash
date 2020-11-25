@@ -53,7 +53,7 @@ $(document).ready(function(){
 <jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<div class="container">
 		<h1>addNotice</h1>
-		<form id="addnoticeForm"method="post" action="addNotice" enctype="multipart/form-data">
+		<form id="addnoticeForm"method="post" action="${pageContext.request.contextPath}/addNotice" enctype="multipart/form-data">
 			<table class="table">
 				<tr>
 					<td>제목</td>
@@ -78,7 +78,7 @@ $(document).ready(function(){
 			<button type="submit" id="submitBtn" style="float: right;" class ="btn btn-outline-primary">공지사항 입력</button>
 		</form>
 		<div>
-			<a href="/admin/noticeList/1" class="btn btn-secondary" style="float: right;">돌아가기</a>
+			<a href="${pageContext.request.contextPath}/admin/noticeList/1" class="btn btn-secondary" style="float: right;">돌아가기</a>
 		</div>
 	</div>
 </body>

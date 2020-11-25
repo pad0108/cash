@@ -46,7 +46,7 @@ button{
 			</table>
 		</div>
 		<h1 style="text-align:center;">로그인</h1>
-		<form action="/login" method="post">
+		<form action="${pageContext.request.contextPath}/login" method="post">
 			<table class="table table-borderless"style="width:100%;">
 				<tr>
 					<td>

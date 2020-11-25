@@ -15,12 +15,12 @@ public class CommentController {
 	@PostMapping("/addComment/{noticeId}")
 	public String addComment(Comment comment, @PathVariable(value="noticeId") int noticeId) {
 		commentService.addComment(comment);
-		return "redirect:/noticeOne/"+noticeId;
+		return "redirect:/admin/noticeOne/"+noticeId;
 	}
 	@GetMapping("/removeComment/{commentId}/{noticeId}")
 	public String removeComment(@PathVariable(value="commentId") int commentId,
 								@PathVariable(value="noticeId") int noticeId){
 		commentService.removeComment(commentId);
-		return "redirect:/noticeOne/"+noticeId;
+		return "redirect:/admin/noticeOne/"+noticeId;
 	}
 }

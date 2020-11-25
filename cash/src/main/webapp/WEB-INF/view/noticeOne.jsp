@@ -24,10 +24,11 @@ button{
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<div class="container">
-		<h1>noticeOne</h1>
+		<h1>상세보기</h1>
 		<div>
-			<a href="/admin/modifyNotice/${notice.noticeId}" class="btn btn-outline-info"style="float: right;">수정</a>
-			<a href="/admin/removeNotice/${notice.noticeId}" class="btn btn-dark"  style="float: right;margin-right:5px;">삭제</a>
+			<a href="${pageContext.request.contextPath}/admin/noticeList/1" class="btn btn-dark" style="float:left;">뒤로가기</a>
+			<a href="${pageContext.request.contextPath}/admin/modifyNotice/${notice.noticeId}" class="btn btn-outline-info"style="float: right;">수정</a>
+			<a href="${pageContext.request.contextPath}/admin/removeNotice/${notice.noticeId}" class="btn btn-dark"  style="float: right;margin-right:5px;">삭제</a>
 		</div>
 		<table class="table">
 			<tr>
@@ -38,14 +39,13 @@ button{
 				<td style="text-align:right;"colspan="2">${notice.noticeDate}	
 				</td>
 			</tr>
-			<tr>
-			<c:forEach var="nf" items="${notice.noticefileList}">
+			<tr>		
 				<td colspan="2" style="text-align:right;">
-					<a href="${pageContext.request.contextPath}/upload/${nf.noticefileName}">${nf.noticefileName}</a>
-				</td>		
-			</c:forEach>
-		</tr>
-			
+				<c:forEach var="nf" items="${notice.noticefileList}">
+					<a href="${pageContext.request.contextPath}/upload/${nf.noticefileName}">${nf.noticefileName}</a><br>
+				</c:forEach>
+				</td>			
+			</tr>		
 			<tr>
 				<td>내용</td>
 				<td>
@@ -55,9 +55,43 @@ button{
 			</tr>
 		</table>
 		<div>
-			
-			<a href="/admin/noticeList/1" class="btn btn-secondary" style="float: right;">돌아가기</a>
+		<h2>댓글</h2>
+		<hr class="my-hr3">
+	</div>
+	<form action="${pageContext.request.contextPath}/addComment/${noticeId}" method="post">
+		<input type="hidden" name="noticeId" value="${notice.noticeId}">
+		<textarea name="commentContent" rows="7" cols="50"class="form-control" style="resize: none;"></textarea>
+		<div style="text-align:right; margin-top:10px; margin-bottom:10px;">
+		<button type="submit" class="btn btn-outline-primary">댓글 입력</button>
 		</div>
+	</form>
+	<table class="table" style="width:100%; text-align:center;'">
+		<c:forEach var="c" items="${notice.commentList}">
+			<c:if test="${!empty c.commentContent}">
+				<tr>
+					<td style="width:5%;">
+						${c.commentId}
+					</td>
+					<td style="width:78%;">
+						${c.commentContent}
+					</td>
+					<td style="width:10%;">
+						${c.commentDate}
+					</td>
+					<td style="width:7%;">
+						<a href="${pageContext.request.contextPath}/removeComment/${c.commentId}/${c.noticeId}"class="btn btn-sm btn-outline-dark">삭제</a>
+					</td>			
+				</tr>
+			</c:if>
+			<c:if test="${empty c.commentContent}">
+				<tr>
+					<td>
+						현재 댓글이 없습니다.
+					</td>		
+				</tr>
+			</c:if>
+		</c:forEach>
+	</table>
 	</div>
 </body>
 </html>

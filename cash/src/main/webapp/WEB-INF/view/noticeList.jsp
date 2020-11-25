@@ -26,7 +26,7 @@ button{
 	<div class="container">
 		<h1>공지사항</h1>
 		<div>
-			<a href="/admin/addNotice" class="btn btn-primary" style="float: right;">글쓰기</a>
+			<a href="${pageContext.request.contextPath}/admin/addNotice" class="btn btn-primary" style="float: right;">글쓰기</a>
 		</div>
 		<div>
 			<table class="table table-hover" style="table-layout:fixed; width:100%;">
@@ -42,7 +42,7 @@ button{
 					<c:forEach var="n" items="${noticeList}">
 						<tr>
 							<td>
-								<a href="/admin/noticeOne/${n.noticeId}">${n.noticeId}</a>
+								<a href="${pageContext.request.contextPath}/admin/noticeOne/${n.noticeId}">${n.noticeId}</a>
 								</td>
 							<td>${n.noticeTitle}</td>
 							<td style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">${n.noticeContent}</td>
@@ -54,10 +54,10 @@ button{
 		</div>
 		<div style="text-align:center;">
 			<c:if test="${currentPage>1}">
-				<a href="/admin/noticeList/${currentPage-1}">이전</a>
+				<a href="${pageContext.request.contextPath}/admin/noticeList/${currentPage-1}">이전</a>
 			</c:if>
 			<c:if test="${currentPage<lastPage}">
-				<a href="/admin/noticeList/${currentPage+1}">다음</a>
+				<a href="${pageContext.request.contextPath}/admin/noticeList/${currentPage+1}">다음</a>
 			</c:if>
 		</div>
 	</div>
