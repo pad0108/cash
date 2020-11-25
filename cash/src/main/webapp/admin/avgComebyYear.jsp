@@ -13,6 +13,7 @@
 <body>
 <jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/view/inc/chartMenu.jsp"></jsp:include>
+<div class="container">
 	<div><!-- 호출 -->
 		<span>연도별 평균 수입액 :</span>
 		<input type="text" id="year">
@@ -21,6 +22,7 @@
 	<div>
 		<canvas id="chart"></canvas>
 	</div>
+</div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
@@ -45,7 +47,7 @@
 										'August', 'September', 'October',
 										'November', 'December' ],
 								datasets : [ {
-									label : $('#year').val()+'년 월별 지출',
+									label : $('#year').val()+'년 월별 수입',
 									backgroundColor : [ 'rgba(255, 128, 255, 0.5)'
 
 									],

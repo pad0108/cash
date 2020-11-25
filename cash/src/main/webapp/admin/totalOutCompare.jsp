@@ -13,10 +13,12 @@
 <body>
 <jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/view/inc/chartMenu.jsp"></jsp:include>
+<div class="container">
 <!-- 호출 -->
 	<div>
 		<canvas id="doughnutChart"></canvas>
 	</div>
+</div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
