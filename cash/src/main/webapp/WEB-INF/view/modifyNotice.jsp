@@ -76,7 +76,7 @@ $(document).ready(function(){
 							<c:forEach var="nf" items="${notice.noticefileList}">	
 								<a href="${pageContext.request.contextPath}/upload/${nf.noticefileName}">${nf.noticefileName}</a>
 								<c:if test="${not empty nf.noticefileName}">
-									<a href="${pageContext.request.contextPath }/removeFile/${notice.noticeId}/${nf.noticefileId}/${nf.noticefileName}"> 삭제</a><br>
+									<a href="${pageContext.request.contextPath}/removeFile/${notice.noticeId}/${nf.noticefileId}/${nf.noticefileName}"> 삭제</a><br>
 								</c:if>
 							</c:forEach>	
 						</td>	

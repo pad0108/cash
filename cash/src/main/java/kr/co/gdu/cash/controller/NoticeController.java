@@ -85,7 +85,7 @@ public class NoticeController {
 		noticefile.setNoticefileName(noticefileName);
 		
 		noticeService.removeFile(noticefile);
-		return "redirect:/modifyNotice/"+noticeId;
+		return "redirect:/admin/modifyNotice/"+noticeId;
 	}
 	
 	// 공지 수정 액션
