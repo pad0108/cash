@@ -72,7 +72,7 @@ var memberCountConTxt2= ${sumOut};
 	}
 </script>
 <body>
-	<jsp:include page="${pageContext.request.contextPath}/WEB-INF/view/inc/menu.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<div class="container">
 		<table style="text-align:center; width:100%; margin-top:10px;">
 			<tr>
@@ -139,7 +139,7 @@ var memberCountConTxt2= ${sumOut};
 							<c:if test="${i-(firstDayOfWeek-1) > 0}">
 								<td>
 									<div>
-										<a href="/admin/cashbookByDay/now/${currentYear}/${currentMonth}/${i-(firstDayOfWeek-1)}">${i-(firstDayOfWeek-1)}</a>
+										<a href="${pageContext.request.contextPath}/admin/cashbookByDay/now/${currentYear}/${currentMonth}/${i-(firstDayOfWeek-1)}">${i-(firstDayOfWeek-1)}</a>
 									</div> <!-- 지출/수입 목록이 있는 날짜를 cashList에서 검색 -->
 									<c:forEach var="c" items="${cashList}">
 										<c:if test="${i-(firstDayOfWeek-1) == c.dday}">

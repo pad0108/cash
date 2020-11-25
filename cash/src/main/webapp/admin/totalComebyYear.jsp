@@ -33,7 +33,7 @@
 	$('#totalComeByYear').click(
 			function() {
 				$.ajax({
-					url : '/totalComebyYear/' + $('#year').val(),
+					url : '${pageContext.request.contextPath}/admin/totalComebyYear/' + $('#year').val(),
 					type : 'get',
 					success : function(data) {
 						console.log(data);

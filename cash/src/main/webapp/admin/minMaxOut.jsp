@@ -30,7 +30,7 @@
 	$('#MinMaxOut').click(
 		function() {
 		$.ajax({
-			url:'/minMaxOut/'+$('#year').val(),
+			url:'${pageContext.request.contextPath}/admin/minMaxOut/'+$('#year').val(),
 			type:'get',
 			success:function(data) {
 				console.log(data);

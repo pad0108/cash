@@ -20,6 +20,19 @@ button{
 	font-family: 'Noto Sans JP', sans-serif;
 }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$('#addBtn').click(function(){
+		f($('#commenttext').val().length < 1){
+			alert('댓글을 입력해주세요');
+			return;
+		} else {
+			$('#addCommentForm').submit();
+		}
+	});
+});
+</script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
@@ -58,11 +71,11 @@ button{
 		<h2>댓글</h2>
 		<hr class="my-hr3">
 	</div>
-	<form action="${pageContext.request.contextPath}/addComment/${noticeId}" method="post">
+	<form id="addCommentForm" action="${pageContext.request.contextPath}/addComment/${noticeId}" method="post">
 		<input type="hidden" name="noticeId" value="${notice.noticeId}">
-		<textarea name="commentContent" rows="7" cols="50"class="form-control" style="resize: none;"></textarea>
+		<textarea id="commenttext" name="commentContent" rows="7" cols="50"class="form-control" style="resize: none;"></textarea>
 		<div style="text-align:right; margin-top:10px; margin-bottom:10px;">
-		<button type="submit" class="btn btn-outline-primary">댓글 입력</button>
+		<button id="addBtn"type="submit" class="btn btn-outline-primary">댓글 입력</button>
 		</div>
 	</form>
 	<table class="table" style="width:100%; text-align:center;'">

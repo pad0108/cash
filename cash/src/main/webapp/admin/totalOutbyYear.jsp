@@ -30,7 +30,7 @@
 	$('#totalOutByYear').click(
 			function() {
 				$.ajax({
-					url : '/totalOutbyYear/' + $('#year').val(),
+					url : '${pageContext.request.contextPath}/admin/totalOutbyYear/' + $('#year').val(),
 					type : 'get',
 					success : function(data) {
 						console.log(data);

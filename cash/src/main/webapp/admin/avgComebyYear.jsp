@@ -30,7 +30,7 @@
 	$('#avgComebyYear').click(
 			function() {
 				$.ajax({
-					url : '/avgComebyYear/' + $('#year').val(),
+					url : '${pageContext.request.contextPath}/admin/avgComebyYear/' + $('#year').val(),
 					type : 'get',
 					success : function(data) {
 						console.log(data);

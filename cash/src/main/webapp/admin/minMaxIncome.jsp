@@ -30,7 +30,7 @@
 	$('#MinMaxIncome').click(
 		function() {
 		$.ajax({
-			url:'/minMaxIncome/'+$('#year').val(),
+			url:'${pageContext.request.contextPath}/admin/minMaxIncome/'+$('#year').val(),
 			type:'get',
 			success:function(data) {
 				console.log(data);

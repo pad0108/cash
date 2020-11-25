@@ -53,7 +53,7 @@ $(document).ready(function(){
 <jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<div class="container">
 		<h1>addNotice</h1>
-		<form id="addnoticeForm"method="post" action="${pageContext.request.contextPath}/addNotice" enctype="multipart/form-data">
+		<form id="addnoticeForm"method="post" action="${pageContext.request.contextPath}/admin/addNotice" enctype="multipart/form-data">
 			<table class="table">
 				<tr>
 					<td>제목</td>

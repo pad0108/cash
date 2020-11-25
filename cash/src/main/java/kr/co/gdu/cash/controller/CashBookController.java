@@ -73,7 +73,7 @@ public class CashBookController {
 	
 	
 	
-	@GetMapping(value="/admin/cashbookByMonth/{currentYear}/{currentMonth}")
+	@GetMapping("/admin/cashbookByMonth/{currentYear}/{currentMonth}")
 	// requestparam으로 paramMonth가 null이면 0으로 바꿔라(int로 형변환을 해야하기 떄문에) =
 	// ("request.getParamater("paramMonth");)
 	public String cashbookByMonth(Model model, @PathVariable(name = "currentYear") int currentYear,
@@ -130,7 +130,7 @@ public class CashBookController {
 	@GetMapping("/admin/removeCashbook/{cashbookId}")
 	public String removeCashbook(@PathVariable(value = "cashbookId") int cashbookId) {
 		cashbookService.removeCashbook(cashbookId);
-		return "redirect:/admin/cashbookByMonth";
+		return "redirect:/admin/cashbookByMonth/-1/-1";
 	}
 	// 수입/지출 폼
 	@GetMapping("/admin/modifyCashbook/{cashbookId}")
@@ -150,7 +150,7 @@ public class CashBookController {
 	public String modifyCashbook(Cashbook cashbook) {
 		cashbookService.modifyCashbook(cashbook);
 		
-		return"redirect:/admin/cashbookByMonth";
+		return"redirect:/admin/cashbookByMonth/-1/-1";
 	}
 	// 수입/지출 표
 	@GetMapping("/admin/cashbookList/{currentPage}")

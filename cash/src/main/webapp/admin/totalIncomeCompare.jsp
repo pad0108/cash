@@ -24,7 +24,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script>
 $.ajax({
-		url : '/totalIncomeCompare',
+		url : '${pageContext.request.contextPath}/admin/totalIncomeCompare',
 		type : 'get',
 		success : function(data) {
 			console.log(data);
