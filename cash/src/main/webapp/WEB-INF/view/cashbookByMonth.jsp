@@ -144,10 +144,10 @@ var memberCountConTxt2= ${sumOut};
 									<c:forEach var="c" items="${cashList}">
 										<c:if test="${i-(firstDayOfWeek-1) == c.dday}">
 											<c:if test="${c.cashbookKind == '수입'}">
-												<div>수입 : ${c.cashbookPrice}</div>
+												<div><font color="#52E252">수입 : ${c.cashbookPrice}</font></div>
 											</c:if>
 											<c:if test="${c.cashbookKind == '지출'}">
-												<div>지출 : ${c.cashbookPrice}</div>
+												<div><font color="#EB0000">지출 : ${c.cashbookPrice}</font></div>
 											</c:if>
 										</c:if>
 									</c:forEach>

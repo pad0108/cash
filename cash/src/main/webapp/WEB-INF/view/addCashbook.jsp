@@ -23,22 +23,23 @@ button{
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
-	<h1>addCashbook</h1>
+	<div class="container">
+	<h2>내역 추가</h2>
 	<form method="post" action="${pageContext.request.contextPath}/addCashbook">
-		<table border="1">
+		<table class="table">
 			<tr>
-				<td>cashbook_date</td>
+				<td>날짜</td>
 				<td>
 					<input type="text" name="cashbookDate" value="${currentYear}-${currentMonth}-${currentDay}" readonly="readonly">
 				</td>
 			</tr>
 			<tr>
-				<td>cashbook_kind</td>
+				<td>종류</td>
 				<td><input type="radio" name="cashbookKind" value="수입">수입
 					<input type="radio" name="cashbookKind" value="지출">지출</td>
 			</tr>
 			<tr>
-				<td>category_name</td>
+				<td>카테고리</td>
 				<td>
 					<select name="categoryName">
 						<c:forEach var="c" items="${categoryList}">
@@ -48,19 +49,20 @@ button{
 				</td>
 			</tr>
 			<tr>
-				<td>cashbook_price</td>
+				<td>금액</td>
 				<td>
 					<input type="text" name="cashbookPrice">
 				</td>
 			</tr>
 			<tr>
-				<td>cashbook_content</td>
+				<td>내용</td>
 				<td>
 					<input type="text" name="cashbookContent">
 				</td>
 			</tr>
 		</table>
-		<button type="submit">수입/지출 입력</button>
+		<button type="submit" class="btn btn-outline-info" style="float:right;">수입/지출 입력</button>
 	</form>
+	</div>
 </body>
 </html>
