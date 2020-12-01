@@ -5,7 +5,7 @@
 		resultType="kr.co.gdu.cash.vo.Guest">
 		SELECT
 			guest_id guestId,
-			guest_writter guestWritter,
+			guest_writter guestWriter,
 			guest_content guestContent,
 			guest_date guestDate
 		FROM guest
@@ -31,9 +31,13 @@
 			guest_content
 			guest_date
 		)VALUES(
-			#{guestWritter},
+			#{guestWriter},
 			#{guestContent},
 			NOW()
 		)
 	</insert>
+	<select id="selectGuestCount" resultType="Integer">
+		SELECT COUNT(*) FROM guest
+	
+	</select>
 </mapper>

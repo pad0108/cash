@@ -12,6 +12,8 @@
 		<li class="nav-item active"><a class="nav-link"
 			href="${pageContext.request.contextPath}/admin/cashbookList/1" >수집/지출표</a></li>
 		<li class="nav-item active"><a class="nav-link"
+			href="${pageContext.request.contextPath}/admin/guestList/1" >방명록</a></li>
+		<li class="nav-item active"><a class="nav-link"
 			href="${pageContext.request.contextPath}/admin/logout" >로그아웃</a></li>
 		<li class="nav-item active"><a class="nav-link"
 			href="${pageContext.request.contextPath}/admin/totalOutbyYear.jsp" >chart</a></li>

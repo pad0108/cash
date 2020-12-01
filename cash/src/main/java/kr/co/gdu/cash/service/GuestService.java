@@ -36,4 +36,8 @@ public class GuestService {
 	public void modifyGuestBook(Guest guest) {
 		guestMapper.updateGuest(guest);
 	}
+	//전체 페이지
+	public int getCountGuest() {
+		return guestMapper.selectGuestCount();
+	}
 }

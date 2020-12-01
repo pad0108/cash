@@ -17,4 +17,6 @@ public interface GuestMapper {
 	int deleteGuest(int guestId);
 	//방명록 수정
 	int updateGuest(Guest guest);
+	//전체 페이지
+	int selectGuestCount();
 }
