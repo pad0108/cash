@@ -5,30 +5,30 @@
 		resultType="kr.co.gdu.cash.vo.Guest">
 		SELECT
 			guest_id guestId,
-			guest_writter guestWriter,
+			guest_writer guestWriter,
 			guest_content guestContent,
 			guest_date guestDate
-		FROM guest
+		FROM guestbook
 		ORDER BY guest_date DESC
 		LIMIT #{beginRow},
 		#{rowPerPage}
 	</select>
 	<delete id="deleteGuest" parameterType="int">
 		DELETE
-		FROM guest
+		FROM guestbook
 		WHERE
 		guest_id = #{guestId}
 	</delete>
 	<update id="updateGuest" parameterType="kr.co.gdu.cash.vo.Guest">
-		UPDATE guest
+		UPDATE guestbook
 		SET guest_content = #{guestContent},
 			guest_date = NOW()
 		WHERE guest_id = #{guestId}
 	</update>
 	<insert id="insertGuest" parameterType="kr.co.gdu.cash.vo.Guest">
-		INSERT INTO guest(
-			guest_writter
-			guest_content
+		INSERT INTO guestbook(
+			guest_writer,
+			guest_content,
 			guest_date
 		)VALUES(
 			#{guestWriter},
@@ -37,7 +37,7 @@
 		)
 	</insert>
 	<select id="selectGuestCount" resultType="Integer">
-		SELECT COUNT(*) FROM guest
+		SELECT COUNT(*) FROM guestbook
 	
 	</select>
 </mapper>

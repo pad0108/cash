@@ -20,9 +20,9 @@ public class NoticeService {
 	//파일 경로 지정 학원 PC
 	//private final String PATH = "D:\\workspace\\git-workspace\\cash\\cash\\src\\main\\webapp\\upload\\";
 	//파일 경로 지정 집 PC
-	//private final String PATH = "D:\\stswork\\cash\\cash\\src\\main\\webapp\\upload\\";
+	private final String PATH = "D:\\stswork\\cash\\cash\\src\\main\\webapp\\upload\\";
 	//aw에 업로드시 사용하는 경로
-	private final String PATH = "/home/ubuntu/tomcat9/webapps/cash_cash/upload/"; 
+	//private final String PATH = "/home/ubuntu/tomcat9/webapps/cash_cash/upload/"; 
 	
 	@Autowired private NoticeMapper noticeMapper;
 	@Autowired private CashbookMapper cashbookMapper;

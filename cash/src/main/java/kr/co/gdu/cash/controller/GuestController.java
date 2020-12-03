@@ -42,7 +42,8 @@ public class GuestController {
 	//입력
 	@PostMapping("addGuestbook")
 	public String addGuestbook(Guest guest) {
-		return "redirect:/admin/guestList";
+		guestService.addGuestbook(guest);
+		return "redirect:/admin/guestList/1";
 	}
 	//수정 폼
 	@GetMapping("/admin/modifyGuest/{guestId}")

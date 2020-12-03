@@ -24,7 +24,7 @@ button{
 <script>
 $(document).ready(function(){
 	$('#addBtn').click(function(){
-		f($('#commenttext').val().length < 1){
+		if($('#commenttext').val().length < 1){
 			alert('댓글을 입력해주세요');
 			return;
 		} else {
@@ -70,7 +70,7 @@ $(document).ready(function(){
 		<div>
 		<h2>댓글</h2>
 		<hr class="my-hr3">
-	</div>
+		</div>
 	<form id="addCommentForm" action="${pageContext.request.contextPath}/addComment/${noticeId}" method="post">
 		<input type="hidden" name="noticeId" value="${notice.noticeId}">
 		<textarea id="commenttext" name="commentContent" rows="7" cols="50"class="form-control" style="resize: none;"></textarea>
