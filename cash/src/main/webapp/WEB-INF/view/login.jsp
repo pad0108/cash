@@ -51,14 +51,14 @@ button{
 				<tr>
 					<td>
 						<div>
-							<input type="text" name="id" class= "form-control"placeholder='아이디'>
+							<input type="text" name="id" class= "form-control"placeholder='아이디' value="goodee">
 						</div>	
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<div>
-							<input type="text" name="pw" class= "form-control" placeholder='비밀번호'>
+							<input type="text" name="pw" class= "form-control" placeholder='비밀번호' value="1234">
 						</div>	
 					</td>
 				</tr>
